@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Table({ location, API_KEY }) {
+function TableAndImage({ location, API_KEY }) {
   const [zoom, setZoom] = useState(10);
 
   function handleZoom(modifier) {
@@ -35,4 +35,4 @@ function Table({ location, API_KEY }) {
   );
 }
 
-export default Table;
+export default TableAndImage;

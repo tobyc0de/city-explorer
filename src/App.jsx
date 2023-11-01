@@ -3,8 +3,9 @@ import "./App.css";
 import axios from "axios";
 import Error from "./components/Error";
 import Form from "./components/Form";
-import Table from "./components/Table";
+import TableAndImage from "./components/Table";
 import Weather from "./components/Weather";
+import Movies from "./components/Movies";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -37,13 +38,11 @@ function App() {
   async function getWeather(lat, lon) {
     const weatherAPI = `http://localhost:8081/weather?lat=${lat}&lon=${lon}`;
     const weatherRes = await axios.get(weatherAPI);
-    console.log(weatherRes);
     setWeather(weatherRes.data);
-    console.log(weather);
   }
 
-  async function getMovie(cityname) {
-    const movieAPI = `http://localhost:8081/movies?city=${cityname}`;
+  async function getMovie(search) {
+    const movieAPI = `http://localhost:8081/movies?city=${search}`;
     const movieRes = await axios.get(movieAPI);
     setMovies(movieRes);
   }
@@ -57,9 +56,9 @@ function App() {
       {location.lon && (
         <div>
           <Weather location={location} weather={weather} />
+          <Movies movies={movies} />
 
-          <Table location={location} API_KEY={API_KEY} />
-          <div>{JSON.stringify(movies)}</div>
+          <TableAndImage location={location} API_KEY={API_KEY} />
         </div>
       )}
     </>

@@ -1,0 +1,36 @@
+html {
+  background: url(./img/map.jpg);
+  display: flex;
+  max-width: 1500px;
+  margin: 50px auto;
+  color: white;
+  font-family: monospace;
+}
+body,
+#root {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+}
+
+img {
+  border-radius: 50%;
+}
+
+table,
+tr,
+td,
+th {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+table,
+img {
+  width: 100%;
+  margin: 20px;
+}
