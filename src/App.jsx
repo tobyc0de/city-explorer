@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 import Error from "./components/Error";
 import Form from "./components/Form";
-import TableAndImage from "./components/Table";
+import TableAndImage from "./components/TableAndImage";
 import Weather from "./components/Weather";
 import Movies from "./components/Movies";
 
