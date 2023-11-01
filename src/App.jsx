@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import axios from "axios";
+import Error from "./components/Error";
+import Form from "./components/Form";
+import Table from "./components/Table";
+import Weather from "./components/Weather";
+
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [location, setLocation] = useState({});
+  const [search, setSearch] = useState("");
+  const [error, setError] = useState();
+  const [weather, setWeather] = useState({});
+
+  function handleSearchChange(event) {
+    setSearch(event.target.value);
+  }
+
+  async function getLocation(event) {
+    event.preventDefault();
+    const API = `https://eu1.locationiq.com/v1/search?q=${search}&key=${API_KEY}&format=json`;
+    try {
+      const apiResponse = await axios.get(API);
+      setLocation(apiResponse.data[0]);
+      getWeather(apiResponse.data[0].lat, apiResponse.data[0].lon);
+      setError(0);
+    } catch (error) {
+      setError(error);
+      setWeather({});
+    }
+  }
+
+  async function getWeather(lat, lon) {
+    const weatherAPI = `http://localhost:8081/weather?lat=${lat}&lon=${lon}`;
+    const weatherRes = await axios.get(weatherAPI);
+    console.log(weatherRes);
+    setWeather(weatherRes.data);
+    console.log(weather);
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <h1>Find your favorite Location!</h1>
+      <Form getLocation={getLocation} handleSearchChange={handleSearchChange} />
+      <Weather location={location} weather={weather} />
 
-export default App
+      {error ? (
+        <Error error={error} search={search} />
+      ) : (
+        <div>
+          <Table location={location} API_KEY={API_KEY} />
+        </div>
+      )}
+    </>
+  );
+}
+export default App;
