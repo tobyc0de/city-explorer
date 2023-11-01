@@ -44,12 +44,12 @@ function App() {
     <>
       <h1>Find your favorite Location!</h1>
       <Form getLocation={getLocation} handleSearchChange={handleSearchChange} />
-      <Weather location={location} weather={weather} />
 
-      {error ? (
-        <Error error={error} search={search} />
-      ) : (
+      {error && <Error error={error} search={search} />}
+      {location.lon && (
         <div>
+          <Weather location={location} weather={weather} />
+
           <Table location={location} API_KEY={API_KEY} />
         </div>
       )}
