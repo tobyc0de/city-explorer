@@ -13,6 +13,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState();
   const [weather, setWeather] = useState({});
+  const [movies, setMovies] = useState({});
 
   function handleSearchChange(event) {
     setSearch(event.target.value);
@@ -25,6 +26,7 @@ function App() {
       const apiResponse = await axios.get(API);
       setLocation(apiResponse.data[0]);
       getWeather(apiResponse.data[0].lat, apiResponse.data[0].lon);
+      getMovie(search);
       setError(0);
     } catch (error) {
       setError(error);
@@ -40,6 +42,12 @@ function App() {
     console.log(weather);
   }
 
+  async function getMovie(cityname) {
+    const movieAPI = `http://localhost:8081/movies?city=${cityname}`;
+    const movieRes = await axios.get(movieAPI);
+    setMovies(movieRes);
+  }
+
   return (
     <>
       <h1>Find your favorite Location!</h1>
@@ -51,6 +59,7 @@ function App() {
           <Weather location={location} weather={weather} />
 
           <Table location={location} API_KEY={API_KEY} />
+          <div>{JSON.stringify(movies)}</div>
         </div>
       )}
     </>

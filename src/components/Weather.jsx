@@ -1,5 +1,4 @@
 function Weather({ weather }) {
-  console.log(typeof weather);
   return (
     <>
       {weather.data && (
