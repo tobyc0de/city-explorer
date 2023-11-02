@@ -34,7 +34,7 @@ function App() {
     try {
       console.log("2");
 
-      const allPI = `http://localhost:8001/request?q=${search}`;
+      const allPI = `https://city-explorer-api-ct3w.onrender.com/request?q=${search}`;
       const allRes = await axios.get(allPI);
       setLocation(JSON.stringify(allRes.data.location));
       setLon(allRes.data.lon);
