@@ -7,7 +7,9 @@ export default function Movies({ movieTitle, movieImg }) {
           <br />
           {movieTitle}
         </h2>
-        {movieImg && <img id="movieImg" src={movieImg} alt={movieTitle} />}
+        {movieImg !== "" && (
+          <img id="movieImg" src={movieImg} alt={movieTitle} />
+        )}
       </>
     </div>
   );
