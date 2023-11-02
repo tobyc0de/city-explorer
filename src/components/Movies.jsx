@@ -2,8 +2,8 @@ export default function Movies({ movieTitle, movieImg }) {
   return (
     <div>
       <>
-        <h2>{movieTitle}</h2>
-        <img src={movieImg} alt="tete" />
+        <h2 id="movietitle">Recommended Movie: {movieTitle}</h2>
+        <img id="movieImg" src={movieImg} alt={movieTitle} />
       </>
     </div>
   );
