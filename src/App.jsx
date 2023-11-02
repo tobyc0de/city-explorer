@@ -36,13 +36,13 @@ function App() {
   }
 
   async function getWeather(lat, lon) {
-    const weatherAPI = `http://localhost:8081/weather?lat=${lat}&lon=${lon}`;
+    const weatherAPI = `https://city-explorer-api-ct3w.onrender.com/weather?lat=${lat}&lon=${lon}`;
     const weatherRes = await axios.get(weatherAPI);
     setWeather(weatherRes.data);
   }
 
   async function getMovie(search) {
-    const movieAPI = `http://localhost:8081/movies?city=${search}`;
+    const movieAPI = `https://city-explorer-api-ct3w.onrender.com/movies?city=${search}`;
     const movieRes = await axios.get(movieAPI);
     setMovies(movieRes);
   }
