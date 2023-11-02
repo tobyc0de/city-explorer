@@ -16,6 +16,7 @@ function App() {
   const [weather, setWeather] = useState({});
   const [movieTitle, setMovieTitle] = useState("");
   const [movieImg, setMovieImg] = useState("");
+  console.log("this", movieTitle);
 
   function handleSearchChange(event) {
     setSearch(event.target.value);
