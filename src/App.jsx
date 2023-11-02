@@ -14,7 +14,8 @@ function App() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState();
   const [weather, setWeather] = useState({});
-  const [movies, setMovies] = useState({});
+  const [movieTitle, setMovieTitle] = useState("");
+  const [movieImg, setMovieImg] = useState("");
 
   function handleSearchChange(event) {
     setSearch(event.target.value);
@@ -44,7 +45,8 @@ function App() {
   async function getMovie(search) {
     const movieAPI = `https://city-explorer-api-ct3w.onrender.com/movies?city=${search}`;
     const movieRes = await axios.get(movieAPI);
-    setMovies(movieRes.data);
+    setMovieTitle(movieRes.data.title);
+    setMovieImg(movieRes.data.image_url);
   }
 
   return (
@@ -56,7 +58,7 @@ function App() {
       {location.lon && (
         <div>
           <Weather location={location} weather={weather} />
-          <Movies movies={movies} />
+          <Movies movies={movieTitle} />
 
           <TableAndImage location={location} API_KEY={API_KEY} />
         </div>
