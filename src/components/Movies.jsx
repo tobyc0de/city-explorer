@@ -3,7 +3,7 @@ export default function Movies({ movies }) {
     <div>
       <>
         <p>
-          <img src={JSON.stringify(movies.data.image_url)} alt="" />
+          <img src={JSON.stringify(movies.data)} alt="" />
           {JSON.stringify(movies.data)}
         </p>
       </>
