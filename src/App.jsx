@@ -16,7 +16,6 @@ function App() {
   const [weather, setWeather] = useState({});
   const [movieTitle, setMovieTitle] = useState("");
   const [movieImg, setMovieImg] = useState("");
-  console.log("this", movieTitle);
 
   function handleSearchChange(event) {
     setSearch(event.target.value);
@@ -59,7 +58,7 @@ function App() {
       {location.lon && (
         <div>
           <Weather location={location} weather={weather} />
-          <Movies movies={movieTitle} movieImg={movieImg} />
+          <Movies movieTitle={movieTitle} movieImg={movieImg} />
 
           <TableAndImage location={location} API_KEY={API_KEY} />
         </div>
