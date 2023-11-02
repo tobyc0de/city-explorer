@@ -2,7 +2,7 @@ export default function Movies({ movies }) {
   return (
     <div>
       <>
-        <p>{JSON.stringify(movies.image_url)}</p>
+        <img src={JSON.stringify(movies.image_url)} alt="tete" />
       </>
     </div>
   );
