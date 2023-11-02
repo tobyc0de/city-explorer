@@ -58,7 +58,7 @@ function App() {
       {location.lon && (
         <div>
           <Weather location={location} weather={weather} />
-          <Movies movies={movieTitle} />
+          <Movies movies={movieTitle} movieImg={movieImg} />
 
           <TableAndImage location={location} API_KEY={API_KEY} />
         </div>
