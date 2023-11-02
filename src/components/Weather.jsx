@@ -4,9 +4,12 @@ function Weather({ weather }) {
       {weather.data && (
         <div>
           {weather.data.map((item) => (
-            <p>
-              {item.valid_date}: {item.weather.description}
-            </p>
+            <div>
+              <h2>Weather Forecast</h2>
+              <p>
+                {item.valid_date}: {item.weather.description}
+              </p>
+            </div>
           ))}
         </div>
       )}
