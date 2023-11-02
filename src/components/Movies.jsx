@@ -7,7 +7,9 @@ export default function Movies({ movieTitle, movieImg }) {
           <br />
           {movieTitle}
         </h2>
-        {movieImg !== "https://image.tmdb.org/t/p/w500/null" && (
+        {movieImg === "https://image.tmdb.org/t/p/w500/null" ? (
+          <p>no image found</p>
+        ) : (
           <img id="movieImg" src={movieImg} alt={movieTitle} />
         )}
       </>
