@@ -1,16 +1,22 @@
 html {
   background: url(./img/map.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   display: flex;
   max-width: 1500px;
-  margin: 50px auto;
+  margin: 0px auto;
   color: white;
   font-family: monospace;
   align-content: center;
   justify-content: center;
   align-items: center;
+  background-color: #123c4a;
 }
-body,
-#root {
+
+body {
+  backdrop-filter: brightness(60%) blur(20px);
+
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -19,6 +25,9 @@ body,
   justify-content: center;
   align-items: center;
   max-width: 1200px;
+  min-height: 1000px;
+  padding: 50px;
+  justify-content: flex-start;
 }
 
 img {
