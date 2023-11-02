@@ -6,64 +6,65 @@ import Form from "./components/Form";
 import TableAndImage from "./components/TableAndImage";
 import Weather from "./components/Weather";
 import Movies from "./components/Movies";
-
-const API_KEY = import.meta.env.VITE_API_KEY;
+const LOCATION_API_KEY = import.meta.env.VITE_API_KEY;
 
 function App() {
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState("");
+  const [lon, setLon] = useState("0");
+  const [lat, setLat] = useState("0");
   const [search, setSearch] = useState("");
   const [error, setError] = useState();
-  const [weather, setWeather] = useState({});
+  // const [weather, setWeather] = useState({});
   const [movieTitle, setMovieTitle] = useState("");
-  const [movieImg, setMovieImg] = useState("");
+  const [movieImg, setMovieImg] = useState(
+    "https://image.tmdb.org/t/p/w500/null"
+  );
 
   function handleSearchChange(event) {
     setSearch(event.target.value);
   }
 
-  async function getLocation(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    const API = `https://eu1.locationiq.com/v1/search?q=${search}&key=${API_KEY}&format=json`;
+    console.log("1");
+    getData();
+  }
+
+  async function getData() {
     try {
-      const apiResponse = await axios.get(API);
-      setLocation(apiResponse.data[0]);
-      getWeather(apiResponse.data[0].lat, apiResponse.data[0].lon);
-      getMovie(search);
-      setError(0);
+      console.log("2");
+
+      const allPI = `http://localhost:8001/request?q=${search}`;
+      const allRes = await axios.get(allPI);
+      setLocation(JSON.stringify(allRes.data.location));
+      setLon(allRes.data.lon);
+      setLat(allRes.data.lat);
+      setMovieTitle(allRes.data.movie);
+      setMovieImg(`https://image.tmdb.org/t/p/w500/${allRes.data.movieImg}`);
+      console.log("3");
+
+      // setWeather(allRes.weather);
     } catch (error) {
       setError(error);
-      setWeather({});
     }
-  }
-
-  async function getWeather(lat, lon) {
-    const weatherAPI = `https://city-explorer-api-ct3w.onrender.com/weather?lat=${lat}&lon=${lon}`;
-    const weatherRes = await axios.get(weatherAPI);
-    setWeather(weatherRes.data);
-  }
-
-  async function getMovie(search) {
-    const movieAPI = `https://city-explorer-api-ct3w.onrender.com/movies?city=${search}`;
-    const movieRes = await axios.get(movieAPI);
-    setMovieTitle(movieRes.data.title);
-    setMovieImg(movieRes.data.image_url);
   }
 
   return (
     <>
       <h1>Find your favorite Location!</h1>
-      <Form getLocation={getLocation} handleSearchChange={handleSearchChange} />
-
-      {error && <Error error={error} search={search} />}
-      {location.lon && (
-        <div>
-          <Weather location={location} weather={weather} />
-          <Movies movieTitle={movieTitle} movieImg={movieImg} />
-
-          <TableAndImage location={location} API_KEY={API_KEY} />
-        </div>
-      )}
+      <Form
+        handleSubmit={handleSubmit}
+        handleSearchChange={handleSearchChange}
+      />
+      <Movies movieTitle={movieTitle} movieImg={movieImg} />
+      <TableAndImage
+        location={location}
+        lat={lat}
+        lon={lon}
+        LOCATION_API_KEY={LOCATION_API_KEY}
+      />
     </>
   );
 }
+
 export default App;

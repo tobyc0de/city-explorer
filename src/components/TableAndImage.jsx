@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TableAndImage({ location, API_KEY }) {
+function TableAndImage({ location, LOCATION_API_KEY, lat, lon }) {
   const [zoom, setZoom] = useState(10);
 
   function handleZoom(modifier) {
@@ -17,9 +17,9 @@ function TableAndImage({ location, API_KEY }) {
               <th>Lon</th>
             </tr>
             <tr>
-              <td>{location.display_name}</td>
-              <td>{location.lat}</td>
-              <td>{location.lon}</td>
+              <td>{location}</td>
+              <td>{lat}</td>
+              <td>{lon}</td>
             </tr>
           </tbody>
         </table>
@@ -28,7 +28,7 @@ function TableAndImage({ location, API_KEY }) {
           <button onClick={() => handleZoom(-1)}>Zoom out</button>
         </div>
         <img
-          src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${location.lat},${location.lon}&markers=icon:large-blue-cutout|${location.lat},${location.lon}&zoom=${zoom}`}
+          src={`https://maps.locationiq.com/v3/staticmap?key=${LOCATION_API_KEY}&center=${lat},${lon}&markers=icon:large-blue-cutout|${lat},${lon}&zoom=${zoom}`}
           alt="mappp"
         />
       </div>

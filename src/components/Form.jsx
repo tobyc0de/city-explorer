@@ -1,7 +1,7 @@
-function Form({ getLocation, handleSearchChange }) {
+function Form({ handleSubmit, handleSearchChange }) {
   return (
     <>
-      <form onSubmit={getLocation}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="search here"
