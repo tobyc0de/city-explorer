@@ -44,7 +44,7 @@ function App() {
   async function getMovie(search) {
     const movieAPI = `https://city-explorer-api-ct3w.onrender.com/movies?city=${search}`;
     const movieRes = await axios.get(movieAPI);
-    setMovies(movieRes);
+    setMovies(movieRes.data);
   }
 
   return (
