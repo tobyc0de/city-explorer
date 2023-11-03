@@ -113,6 +113,8 @@ input {
   height: 100%;
   width: 100%;
   background-color: #003844bd;
+  backdrop-filter: brightness(70%) blur(5px);
+
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
