@@ -221,6 +221,7 @@ input {
 #headline,
 h1 {
   font-size: 200%;
+  margin: 20px 0px;
 }
 
 #bgimg {
@@ -251,6 +252,7 @@ h1 {
 }
 
 #contentcontainer {
+  display: flex;
   flex-direction: column;
   max-width: 1200px;
   min-width: 50%;
