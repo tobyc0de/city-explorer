@@ -39,7 +39,7 @@ function App() {
       const allPI = `https://city-explorer-api-ct3w.onrender.com/request?q=${search}`;
 
       const allRes = await axios.get(allPI);
-      setLocation(JSON.stringify(allRes.data.location));
+      setLocation(allRes.data.location);
       setLon(allRes.data.lon);
       setLat(allRes.data.lat);
       setMapImgUrl(allRes.data.mapImgUrl);
