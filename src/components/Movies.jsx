@@ -5,11 +5,8 @@ export default function Movies({ movieTitle, movieImg }) {
         <p></p>
       ) : (
         <div>
-          <h2 id="movietitle">
-            Recommended Movie:
-            <br />
-            {movieTitle}
-          </h2>
+          <h2 id="movietitle">Recommended Movie:</h2>
+          <p>{movieTitle}</p>
           {movieImg === "https://image.tmdb.org/t/p/w500/null" ? (
             <p>no movie image found, try e.g. "Paris"</p>
           ) : (
