@@ -65,7 +65,7 @@ function App() {
           />
           {error !== "" && <Error error={error} search={search} />}
           {location !== "" && (
-            <div>
+            <div id="contentsubcontainer">
               <h2 id="headline">{location}</h2>
 
               <div id="mapNweather">

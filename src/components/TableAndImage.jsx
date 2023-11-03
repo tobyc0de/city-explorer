@@ -17,7 +17,7 @@ function TableAndImage({
     <>
       <div className="content" id="leftcontent">
         <div>
-          <h2>Map data</h2>
+          <h2>Coordinates</h2>
           <table>
             <tbody>
               <tr>
@@ -30,11 +30,16 @@ function TableAndImage({
               </tr>
             </tbody>
           </table>
+          <h2>Map</h2>
 
           <img src={mapImgURL + "&zoom=" + zoom} alt="mappp" />
           <div>
-            <button onClick={() => handleZoom(1)}>Zoom in</button>
-            <button onClick={() => handleZoom(-1)}>Zoom out</button>
+            <button onClick={() => handleZoom(1)} className="minibutton">
+              +
+            </button>
+            <button onClick={() => handleZoom(-1)} className="minibutton">
+              -
+            </button>
           </div>
         </div>
       </div>
