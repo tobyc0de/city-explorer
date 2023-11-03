@@ -56,14 +56,16 @@ function App() {
         handleSubmit={handleSubmit}
         handleSearchChange={handleSearchChange}
       />
-      <TableAndImage
-        location={location}
-        lat={lat}
-        lon={lon}
-        LOCATION_API_KEY={LOCATION_API_KEY}
-        error={error}
-      />
-      <Weather weather={weather} />
+      <div id="mapNweather">
+        <TableAndImage
+          location={location}
+          lat={lat}
+          lon={lon}
+          LOCATION_API_KEY={LOCATION_API_KEY}
+          error={error}
+        />
+        <Weather weather={weather} />
+      </div>
       <Movies movieTitle={movieTitle} movieImg={movieImg} />
     </>
   );

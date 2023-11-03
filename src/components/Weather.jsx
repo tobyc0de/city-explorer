@@ -2,7 +2,7 @@ function Weather({ weather }) {
   return (
     <>
       {weather && (
-        <div>
+        <div className="content">
           <h2>Weather Forecast</h2>
           <table>
             <tr>
