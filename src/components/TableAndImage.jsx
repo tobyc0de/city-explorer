@@ -9,7 +9,7 @@ function TableAndImage({ location, LOCATION_API_KEY, lat, lon, error }) {
   return (
     <>
       <div className="content">
-        <h2>{location}</h2>
+        <h2>Map data</h2>
         <table>
           <tbody>
             <tr>

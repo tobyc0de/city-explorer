@@ -56,17 +56,25 @@ function App() {
         handleSubmit={handleSubmit}
         handleSearchChange={handleSearchChange}
       />
-      <div id="mapNweather">
-        <TableAndImage
-          location={location}
-          lat={lat}
-          lon={lon}
-          LOCATION_API_KEY={LOCATION_API_KEY}
-          error={error}
-        />
-        <Weather weather={weather} />
-      </div>
-      <Movies movieTitle={movieTitle} movieImg={movieImg} />
+      {location !== "" && (
+        <div>
+          <h2 id="headline">{location}</h2>
+
+          <div id="mapNweather">
+            <TableAndImage
+              location={location}
+              lat={lat}
+              lon={lon}
+              LOCATION_API_KEY={LOCATION_API_KEY}
+              error={error}
+            />{" "}
+            <div class="content">
+              <Weather weather={weather} />
+              <Movies movieTitle={movieTitle} movieImg={movieImg} />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

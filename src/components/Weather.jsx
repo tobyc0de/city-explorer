@@ -2,7 +2,7 @@ function Weather({ weather }) {
   return (
     <>
       {weather && (
-        <div className="content">
+        <div>
           <h2>Weather Forecast</h2>
           <table>
             <tr>
@@ -11,7 +11,7 @@ function Weather({ weather }) {
             </tr>
 
             {weather.map((item) => (
-              <tr>
+              <tr id={item.valid_date}>
                 <td>{item.valid_date}</td>
                 <td>{item.weather.description}</td>
               </tr>

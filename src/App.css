@@ -23,7 +23,7 @@ body {
   align-content: center;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
+  width: 1200px;
   min-height: 1000px;
   padding: 50px;
   justify-content: flex-start;
@@ -92,4 +92,8 @@ input {
 
 #mapNweather {
   display: flex;
+}
+
+#headline {
+  font-size: 200%;
 }
