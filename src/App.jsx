@@ -14,7 +14,7 @@ function App() {
   const [lat, setLat] = useState("0");
   const [search, setSearch] = useState("");
   const [error, setError] = useState();
-  // const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState([]);
   const [movieTitle, setMovieTitle] = useState("");
   const [movieImg, setMovieImg] = useState(
     "https://image.tmdb.org/t/p/w500/null"
@@ -35,15 +35,15 @@ function App() {
       console.log("2");
 
       const allPI = `https://city-explorer-api-ct3w.onrender.com/request?q=${search}`;
+      // const allPI = `http://localhost:10000/request?q=${search}`;
+
       const allRes = await axios.get(allPI);
       setLocation(JSON.stringify(allRes.data.location));
       setLon(allRes.data.lon);
       setLat(allRes.data.lat);
       setMovieTitle(allRes.data.movie);
       setMovieImg(`https://image.tmdb.org/t/p/w500/${allRes.data.movieImg}`);
-      console.log("3");
-
-      // setWeather(allRes.weather);
+      setWeather(allRes.data.weather.data);
     } catch (error) {
       setError(error);
     }
@@ -56,13 +56,15 @@ function App() {
         handleSubmit={handleSubmit}
         handleSearchChange={handleSearchChange}
       />
-      <Movies movieTitle={movieTitle} movieImg={movieImg} />
       <TableAndImage
         location={location}
         lat={lat}
         lon={lon}
         LOCATION_API_KEY={LOCATION_API_KEY}
+        error={error}
       />
+      <Weather weather={weather} />
+      <Movies movieTitle={movieTitle} movieImg={movieImg} />
     </>
   );
 }

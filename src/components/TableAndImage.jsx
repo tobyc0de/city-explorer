@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TableAndImage({ location, LOCATION_API_KEY, lat, lon }) {
+function TableAndImage({ location, LOCATION_API_KEY, lat, lon, error }) {
   const [zoom, setZoom] = useState(10);
 
   function handleZoom(modifier) {
