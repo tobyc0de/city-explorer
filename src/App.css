@@ -97,3 +97,15 @@ input {
 #headline {
   font-size: 200%;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media only screen and (min-width: 900px) {
+  #leftcontent {
+    border-right: 1px dotted white;
+  }
+}

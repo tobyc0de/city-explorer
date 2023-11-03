@@ -8,7 +8,7 @@ function TableAndImage({ location, LOCATION_API_KEY, lat, lon, error }) {
   }
   return (
     <>
-      <div className="content">
+      <div className="content" id="leftcontent">
         <div>
           <h2>Map data</h2>
           <table>
