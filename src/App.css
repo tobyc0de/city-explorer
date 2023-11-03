@@ -152,8 +152,8 @@ body {
 }
 
 img {
-  border-radius: 50%;
-  max-width: 300px;
+  border-radius: 30%;
+  max-width: 350px;
 }
 
 table,
