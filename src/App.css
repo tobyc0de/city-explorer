@@ -261,6 +261,7 @@ h1 {
   justify-content: center;
   margin: 50px;
   background-color: rgba(8, 48, 57, 0.308);
+  padding: 20px;
 }
 
 #root {
