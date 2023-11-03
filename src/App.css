@@ -100,6 +100,7 @@ input {
   min-width: 50%;
   min-height: 1000px;
   backdrop-filter: brightness(70%) blur(5px);
+  border-radius: 50px;
 }
 
 @media only screen and (min-width: 900px) {
