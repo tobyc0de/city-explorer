@@ -51,25 +51,27 @@ button {
   background-color: #083039;
   color: white;
   border: 1px solid white;
-  padding: 10px 20px;
+  padding: 20px 40px;
   font-family: monospace;
   font-weight: 900;
+  font-size: 2rem;
 }
 
 button:hover {
   background-color: white;
   color: #083039;
   border: 1px solid #083039;
-  padding: 10px 20px;
+  padding: 20px 40px;
   font-family: monospace;
 }
 
 input {
   background-color: white;
   color: 083039;
-  border: 1px solid 083039;
-  padding: 10px 20px;
+  border: 1px solid white;
+  padding: 20px 40px;
   font-family: monospace;
+  font-size: 2rem;
 }
 
 .content {
@@ -101,6 +103,7 @@ input {
   min-height: 1000px;
   backdrop-filter: brightness(70%) blur(5px);
   border-radius: 50px;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 900px) {
