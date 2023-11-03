@@ -13,6 +13,7 @@ function App() {
   const [lon, setLon] = useState("0");
   const [lat, setLat] = useState("0");
   const [mapImgURL, setMapImgUrl] = useState("");
+  const [backgroundImg, setBackgroundImage] = useState("");
   const [search, setSearch] = useState("");
   const [error, setError] = useState();
   const [weather, setWeather] = useState([]);
@@ -43,8 +44,7 @@ function App() {
       setLon(allRes.data.lon);
       setLat(allRes.data.lat);
       setMapImgUrl(allRes.data.mapImgUrl);
-      document.body.style.backgroundImage = `url('${allRes.data.mapImgUrl}&zoom=8')`;
-      // document.body.style.backgroundImage = `background:linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)), url('${allRes.data.mapImgUrl}&zoom=10')`;
+      setBackgroundImage(`url('${allRes.data.mapImgUrl}&zoom=8')`);
       setMovieTitle(allRes.data.movie);
       setMovieImg(`https://image.tmdb.org/t/p/w500/${allRes.data.movieImg}`);
       setWeather(allRes.data.weather.data);
@@ -54,33 +54,37 @@ function App() {
   }
 
   return (
-    <>
-      <h1>Find your favorite Location!</h1>
-      <Form
-        handleSubmit={handleSubmit}
-        handleSearchChange={handleSearchChange}
-      />
-      {location !== "" && (
-        <div>
-          <h2 id="headline">{location}</h2>
+    <div id="bgimg" style={{ backgroundImage: backgroundImg }}>
+      <div id="bgcolor">
+        <div id="contentcontainer">
+          <h1>Find your favorite Location!</h1>
+          <Form
+            handleSubmit={handleSubmit}
+            handleSearchChange={handleSearchChange}
+          />
+          {location !== "" && (
+            <div>
+              <h2 id="headline">{location}</h2>
 
-          <div id="mapNweather">
-            <TableAndImage
-              location={location}
-              lat={lat}
-              lon={lon}
-              LOCATION_API_KEY={LOCATION_API_KEY}
-              error={error}
-              mapImgURL={mapImgURL}
-            />{" "}
-            <div className="content">
-              <Weather weather={weather} />
-              <Movies movieTitle={movieTitle} movieImg={movieImg} />
+              <div id="mapNweather">
+                <TableAndImage
+                  location={location}
+                  lat={lat}
+                  lon={lon}
+                  LOCATION_API_KEY={LOCATION_API_KEY}
+                  error={error}
+                  mapImgURL={mapImgURL}
+                />{" "}
+                <div className="content">
+                  <Weather weather={weather} />
+                  <Movies movieTitle={movieTitle} movieImg={movieImg} />
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 }
 

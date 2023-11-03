@@ -1,3 +1,137 @@
+/* START OF CSS RESET */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* END OF CSS RESET */
+
 html {
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,16 +146,10 @@ html {
 }
 
 body {
-  background-image: url("./img/map.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-
   width: 100%;
   height: 100%;
   min-height: 1000px;
-  justify-content: flex-start;
+  margin: 0px !important;
 }
 
 img {
@@ -95,14 +223,52 @@ input {
   font-size: 200%;
 }
 
-#root {
+#bgimg {
+  background-image: url("./img/map.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  text-align: center;
   display: flex;
+  color: white;
+  font-family: monospace;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 1000px;
+}
+
+#bgcolor {
+  flex-direction: column;
+  min-height: 1000px;
+  /* backdrop-filter: blur(3px); */
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 1000px;
+}
+
+#contentcontainer {
+  flex-direction: column;
+  max-width: 1200px;
+  min-width: 50%;
+  min-height: 1000px;
+  border-radius: 50px;
+  justify-content: center;
+  margin: 50px;
+  background-color: rgba(8, 48, 57, 0.308);
+}
+
+#root {
+  /* display: flex;
   flex-direction: column;
   max-width: 1200px;
   min-width: 50%;
   min-height: 1000px;
   backdrop-filter: brightness(70%) blur(5px);
-  border-radius: 50px;
+  border-radius: 50px; */
   justify-content: center;
 }
 
@@ -116,13 +282,11 @@ input {
   height: 100%;
   width: 100%;
   background-color: #003844bd;
-  backdrop-filter: brightness(70%) blur(5px);
-
+  backdrop-filter: blur(3px);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
   align-items: center;
-  padding: 150px 0px;
 }
