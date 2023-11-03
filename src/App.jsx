@@ -15,7 +15,7 @@ function App() {
   const [mapImgURL, setMapImgUrl] = useState("");
   const [backgroundImg, setBackgroundImage] = useState("");
   const [search, setSearch] = useState("");
-  const [error, setError] = useState();
+  const [error, setError] = useState("");
   const [weather, setWeather] = useState([]);
   const [movieTitle, setMovieTitle] = useState("");
   const [movieImg, setMovieImg] = useState(
@@ -49,7 +49,8 @@ function App() {
       setMovieImg(`https://image.tmdb.org/t/p/w500/${allRes.data.movieImg}`);
       setWeather(allRes.data.weather.data);
     } catch (error) {
-      setError(error);
+      console.log(error.message);
+      setError(error.message);
     }
   }
 
@@ -62,6 +63,7 @@ function App() {
             handleSubmit={handleSubmit}
             handleSearchChange={handleSearchChange}
           />
+          {error !== "" && <Error error={error} search={search} />}
           {location !== "" && (
             <div>
               <h2 id="headline">{location}</h2>
