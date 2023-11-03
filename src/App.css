@@ -146,8 +146,8 @@ html {
 }
 
 body {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   min-height: 1000px;
 }
 
@@ -246,7 +246,7 @@ h2 {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   min-height: 1000px;
 }
 
@@ -255,9 +255,10 @@ h2 {
   min-height: 1000px;
   /* backdrop-filter: blur(3px); */
   justify-content: center;
-  width: 100%;
-  height: 100%;
+
   min-height: 1000px;
+  width: 100vw;
+  height: 100vh;
 }
 
 #contentcontainer {
@@ -282,6 +283,8 @@ h2 {
   backdrop-filter: brightness(70%) blur(5px);
   border-radius: 50px; */
   justify-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 @media only screen and (min-width: 900px) {
