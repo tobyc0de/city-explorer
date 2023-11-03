@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-function TableAndImage({ location, LOCATION_API_KEY, lat, lon, error }) {
+function TableAndImage({
+  location,
+  LOCATION_API_KEY,
+  lat,
+  lon,
+  error,
+  mapImgURL,
+}) {
   const [zoom, setZoom] = useState(10);
 
   function handleZoom(modifier) {
@@ -24,10 +31,7 @@ function TableAndImage({ location, LOCATION_API_KEY, lat, lon, error }) {
             </tbody>
           </table>
 
-          <img
-            src={`https://maps.locationiq.com/v3/staticmap?key=${LOCATION_API_KEY}&center=${lat},${lon}&markers=icon:large-blue-cutout|${lat},${lon}&zoom=${zoom}`}
-            alt="mappp"
-          />
+          <img src={mapImgURL + "&zoom=" + zoom} alt="mappp" />
           <div>
             <button onClick={() => handleZoom(1)}>Zoom in</button>
             <button onClick={() => handleZoom(-1)}>Zoom out</button>
