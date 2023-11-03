@@ -35,7 +35,6 @@ function App() {
   async function getData() {
     try {
       console.log("2");
-
       // const allPI = `http://localhost:10000/request?q=${search}`;
       const allPI = `https://city-explorer-api-ct3w.onrender.com/request?q=${search}`;
 
@@ -48,9 +47,11 @@ function App() {
       setMovieTitle(allRes.data.movie);
       setMovieImg(`https://image.tmdb.org/t/p/w500/${allRes.data.movieImg}`);
       setWeather(allRes.data.weather.data);
+      setError("");
     } catch (error) {
       console.log(error.message);
       setError(error.message);
+      setLocation("");
     }
   }
 
@@ -63,8 +64,7 @@ function App() {
             handleSubmit={handleSubmit}
             handleSearchChange={handleSearchChange}
           />
-          {error !== "" && <Error error={error} search={search} />}
-          {location !== "" && (
+          {location ? (
             <div id="contentsubcontainer">
               <h2 id="headline">{location}</h2>
 
@@ -83,6 +83,12 @@ function App() {
                 </div>
               </div>
             </div>
+          ) : !error && !location ? (
+            <p></p>
+          ) : error ? (
+            <Error error={error} search={search} />
+          ) : (
+            <p></p>
           )}
         </div>
       </div>

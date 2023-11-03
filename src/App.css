@@ -279,12 +279,6 @@ h2 {
   min-height: 100vh;
 }
 
-@media only screen and (min-width: 900px) {
-  #leftcontent {
-    border-right: 1px dotted white;
-  }
-}
-
 #bgcolor {
   height: 100%;
   width: 100%;
